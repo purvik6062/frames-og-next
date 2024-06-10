@@ -1,3 +1,5 @@
+"use client";
+import React from "react";
 import {
   processAddressOrEnsName,
   resolveENSProfileImage,
@@ -61,38 +63,38 @@ import { Metadata, ResolvingMetadata } from "next";
 //   };
 // }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const name = "DEMO TITLE";
+// export async function generateMetadata(): Promise<Metadata> {
+//   const name = "DEMO TITLE";
 
-  const frameMetadata = getFrameMetadata({
-    buttons: [
-      {
-        label: "Check eligibility",
-      },
-    ],
-    image: `${NEXT_PUBLIC_URL}/api/images/og/ogTest`,
-    post_url: `${NEXT_PUBLIC_URL}/api/images/og/ogTest`,
-  });
+//   const frameMetadata = getFrameMetadata({
+//     buttons: [
+//       {
+//         label: "Check eligibility",
+//       },
+//     ],
+//     image: `${NEXT_PUBLIC_URL}/api/images/og/ogTest`,
+//     post_url: `${NEXT_PUBLIC_URL}/api/images/og/ogTest`,
+//   });
 
-  return {
-    title: name,
-    description: "Check if you're eligible for a free mint",
-    openGraph: {
-      title: name,
-      description: "Check if you're eligible for a free mint",
-      images: [`${NEXT_PUBLIC_URL}/api/images/og/ogTest`],
-    },
-    other: {
-      ...frameMetadata,
-      "fc:frame:image:aspect_ratio": "1:1",
-    },
-  };
+//   return {
+//     title: name,
+//     description: "Check if you're eligible for a free mint",
+//     openGraph: {
+//       title: name,
+//       description: "Check if you're eligible for a free mint",
+//       images: [`${NEXT_PUBLIC_URL}/api/images/og/ogTest`],
+//     },
+//     other: {
+//       ...frameMetadata,
+//       "fc:frame:image:aspect_ratio": "1:1",
+//     },
+//   };
+// }
+
+console.log("check");
+
+function page({ params }: { params: { addressOrENSName: any } }) {
+  <div>Hello, {params.addressOrENSName}</div>;
 }
 
-export default async function Page({
-  params: { addressOrENSName },
-}: {
-  params: { addressOrENSName: string };
-}) {
-  <div>Hello</div>;
-}
+export default page;
