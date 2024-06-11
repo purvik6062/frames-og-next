@@ -3,6 +3,7 @@ import { ImageResponse } from "next/og";
 export const revalidate = 0;
 
 export const runtime = "edge";
+export const alt = "Hello";
 
 const size = {
   width: 1200,
