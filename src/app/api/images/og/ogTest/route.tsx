@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { ImageResponse } from "next/og";
+export const revalidate = 0;
 
 export const runtime = "edge";
 
