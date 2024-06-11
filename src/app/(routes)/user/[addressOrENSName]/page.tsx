@@ -67,7 +67,7 @@ export async function generateMetadata({
       description: "Check if you're eligible for a free mint",
       // images: [preview],
       // images: [`${NEXT_PUBLIC_URL}/api/images/og/ogTest`],
-      images: [`/api/images/og/ogTest`],
+      images: [`${NEXT_PUBLIC_URL}/api/images/og/ogTest`],
     },
     other: {
       ...frameMetadata,
