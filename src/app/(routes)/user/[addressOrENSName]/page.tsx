@@ -37,8 +37,7 @@ export async function generateMetadata({
       `votes=${encodeURIComponent(`${votingPower} ${tokenSymbol}`)}`,
     avatar && `avatar=${encodeURIComponent(avatar)}`,
     statement && `statement=${encodeURIComponent(statement)}`,
-  ];
-  // .filter(Boolean);
+  ].filter(Boolean);
 
   const preview = `${NEXT_PUBLIC_URL}/api/images/og/ogTest?${imgParams.join(
     "&"
@@ -49,6 +48,11 @@ export async function generateMetadata({
     buttons: [
       {
         label: "Check eligibility",
+      },
+      {
+        label: "Delegate",
+        action: "tx",
+        target: `${NEXT_PUBLIC_URL}/api/transaction`,
       },
     ],
     image: preview,
