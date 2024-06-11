@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import {
   FrameRequest,
   FrameValidationData,
@@ -7,15 +7,15 @@ import {
 import token_abi from "@/GovernanceToken.json";
 import { ethers } from "ethers";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export async function POST(req: NextRequest, res: NextResponse) {
   console.log("Request received:", req.method);
 
   if (req.method !== "POST") {
     console.log("Invalid method:", req.method);
-    return res.status(400).json({ message: "Invalid Method" });
+    return NextResponse.json(
+      { success: false, error: "Invalid Method" },
+      { status: 400 }
+    );
   }
 
   try {
@@ -29,14 +29,16 @@ export default async function handler(
     };
 
     try {
-      const { isValid, message } = await getFrameMessage(
-        req.body as FrameRequest
-      );
+      const body = (await req.json()) as FrameRequest;
+      const { isValid, message } = await getFrameMessage(body);
       console.log("Frame message validation:", isValid);
 
       if (!isValid) {
         console.error("Message is invalid:", message);
-        return res.status(400).json({ message: "Invalid Frame Message" });
+        return NextResponse.json(
+          { success: false, error: "Invalid Frame Message" },
+          { status: 400 }
+        );
       }
 
       // Get the account address
@@ -55,8 +57,7 @@ export default async function handler(
       const data = await encodeData(accountAddress);
       console.log("Data for transaction:", data);
 
-      // Return the transaction frame
-      return res.status(200).json({
+      const documents = {
         chainId: "eip155:42161",
         method: "eth_sendTransaction",
         params: {
@@ -65,17 +66,33 @@ export default async function handler(
           data: data,
           value: "0",
         },
-      });
+      };
+
+      // Return the transaction frame
+      return NextResponse.json(
+        { success: true, data: documents },
+        { status: 200 }
+      );
     } catch (innerError: any) {
       console.error("Error inside processing logic:", innerError.message);
-      return res
-        .status(500)
-        .json({ message: "Internal Server Error", error: innerError.message });
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Internal Server Error",
+          error: innerError.message,
+        },
+        { status: 500 }
+      );
     }
   } catch (error: any) {
     console.error("Error in handler:", error.message);
-    return res
-      .status(500)
-      .json({ message: "Internal Server Error", error: error.message });
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Internal Server Error",
+        error: error.message,
+      },
+      { status: 500 }
+    );
   }
 }
