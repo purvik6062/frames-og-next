@@ -39,9 +39,11 @@ export async function GET(req: NextRequest) {
           justifyContent: "center",
         }}
       >
-        <div style={{ fontSize: 50, fontWeight: 700 }}>{address}</div>
-        {/* <div style={{ fontSize: 48 }}>{votes}</div>
-        <div style={{ fontSize: 36, textAlign: "center" }}>{statement}</div> */}
+        <div style={{ fontSize: 50, fontWeight: 700 }}>
+          {address ? address : "Hello"}
+        </div>
+        {/* <div style={{ fontSize: 48 }}>{votes}</div>*/}
+        {/* <div style={{ fontSize: 36, textAlign: "center" }}>{statement}</div> */}
       </div>
     ),
     {

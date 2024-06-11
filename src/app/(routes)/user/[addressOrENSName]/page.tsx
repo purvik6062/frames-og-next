@@ -71,7 +71,7 @@ export async function generateMetadata({
     },
     other: {
       ...frameMetadata,
-      "fc:frame:image:aspect_ratio": "1:1",
+      "fc:frame:image:aspect_ratio": "1.91:1",
     },
   };
 }
