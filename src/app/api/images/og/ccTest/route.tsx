@@ -8,8 +8,8 @@ export const revalidate = 0;
 export const runtime = "edge";
 
 const size = {
-  width: 1200,
-  height: 630,
+  width: 600,
+  height: 315,
 };
 
 export async function GET(req: NextRequest) {
@@ -20,9 +20,9 @@ export async function GET(req: NextRequest) {
   const avatar = searchParams.get("avatar") || "";
   const dao_name = searchParams.get("dao_name") || "";
 
-  const interSemiBold = fetch(
-    new URL("../assets/Inter-Bold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
+  //   const interSemiBold = fetch(
+  //     new URL("../assets/Inter-Bold.ttf", import.meta.url)
+  //   ).then((res) => res.arrayBuffer());
 
   const bg = await fetch(
     new URL("../assets/main-bg.png", import.meta.url)
@@ -40,13 +40,6 @@ export async function GET(req: NextRequest) {
     "URL.createObjectURL(new Blob([profile]))::",
     URL.createObjectURL(new Blob([profile]))
   );
-  const [fontData, profileImage, textureImage] = await Promise.all([
-    interSemiBold,
-    profile,
-    texture,
-  ]);
-
-  console.log(fontData, profileImage, textureImage);
 
   return new ImageResponse(
     (
@@ -167,14 +160,14 @@ export async function GET(req: NextRequest) {
     ),
     {
       ...size,
-      fonts: [
-        {
-          name: "Inter",
-          data: await interSemiBold,
-          style: "normal",
-          weight: 400,
-        },
-      ],
+      //   fonts: [
+      //     {
+      //       name: "Inter",
+      //       data: await interSemiBold,
+      //       style: "normal",
+      //       weight: 400,
+      //     },
+      //   ],
     }
   );
 }
