@@ -27,7 +27,7 @@ export async function generateMetadata({
     resolveENSProfileImage(address || params.addressOrENSName),
   ]);
 
-  const statement = "Demo statement";
+  const dao_name = "Arbitrum";
   const votingPower = 290000;
   const tokenSymbol = "OP";
   const tokenName = "Optimism";
@@ -36,19 +36,16 @@ export async function generateMetadata({
     votingPower &&
       `votes=${encodeURIComponent(`${votingPower} ${tokenSymbol}`)}`,
     avatar && `avatar=${encodeURIComponent(avatar)}`,
-    statement && `statement=${encodeURIComponent(statement)}`,
+    dao_name && `dao_name=${encodeURIComponent(dao_name)}`,
   ].filter(Boolean);
 
-  const preview = `${NEXT_PUBLIC_URL}/api/images/og/ogTest?${imgParams.join(
+  const preview = `${NEXT_PUBLIC_URL}/api/images/og/ccTest?${imgParams.join(
     "&"
   )}&address=${ensOrTruncatedAddress}`;
   const title = `${ensOrTruncatedAddress} on Agora`;
   const description = `See what ${ensOrTruncatedAddress} believes and how they vote on ${tokenName} governance.`;
   const frameMetadata = getFrameMetadata({
     buttons: [
-      // {
-      //   label: "Check eligibility",
-      // },
       {
         label: "Delegate",
         action: "tx",
@@ -57,10 +54,6 @@ export async function generateMetadata({
     ],
     image: preview,
     post_url: preview,
-    // image: `${NEXT_PUBLIC_URL}/api/images/og/ogTest`,
-    // post_url: `${NEXT_PUBLIC_URL}/api/images/og/ogTest`,
-    // image: `${NEXT_PUBLIC_URL}/api/images/og/ogTest`,
-    // post_url: `${NEXT_PUBLIC_URL}/api/images/og/ogTest`,
   });
 
   return {
@@ -70,8 +63,6 @@ export async function generateMetadata({
       title: name,
       description: "Check if you're eligible for a free mint",
       images: [preview],
-      // images: [`${NEXT_PUBLIC_URL}/api/images/og/ogTest`],
-      // images: [`${NEXT_PUBLIC_URL}/api/images/og/ogTest`],
     },
     other: {
       ...frameMetadata,
