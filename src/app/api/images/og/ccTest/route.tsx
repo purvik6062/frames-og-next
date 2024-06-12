@@ -36,15 +36,10 @@ export async function GET(req: NextRequest) {
     new URL("../assets/meta2.jpg", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
-  console.log(
-    "URL.createObjectURL(new Blob([profile]))::",
-    URL.createObjectURL(new Blob([profile]))
-  );
-
   return new ImageResponse(
     (
       <div
-        tw="bg-cover h-full"
+        // tw="bg-cover h-full"
         style={{
           display: "flex",
           alignItems: "center",
@@ -56,7 +51,7 @@ export async function GET(req: NextRequest) {
           /*@ts-ignore */
           src={bg}
           style={{ position: "absolute", padding: "100px 180px" }}
-          tw="bg-cover h-full"
+          //   tw="bg-cover h-full"
           alt="background"
         />
         <div
