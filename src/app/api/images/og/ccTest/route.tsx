@@ -8,8 +8,8 @@ export const revalidate = 0;
 export const runtime = "edge";
 
 const size = {
-  width: 600,
-  height: 315,
+  width: 1200,
+  height: 630,
 };
 
 export async function GET(req: NextRequest) {
@@ -29,12 +29,12 @@ export async function GET(req: NextRequest) {
   ).then((res) => res.arrayBuffer());
 
   const profile = await fetch(
-    new URL("../assets/profile-img.png", import.meta.url)
+    new URL("../assets/profile-img.jpg", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
-  //   const texture = await fetch(
-  //     new URL("../assets/meta2.png", import.meta.url)
-  //   ).then((res) => res.arrayBuffer());
+  const texture = await fetch(
+    new URL("../assets/meta2.jpg", import.meta.url)
+  ).then((res) => res.arrayBuffer());
 
   console.log(
     "URL.createObjectURL(new Blob([profile]))::",
@@ -145,15 +145,15 @@ export async function GET(req: NextRequest) {
             </div>
           </div>
           <div style={{ display: "flex" }}>
-            {/*@ts-ignore*/}
-            {/* <img
+            <img
+              /*@ts-ignore*/
               src={texture}
               alt="Chora Club"
               style={{
                 borderRadius: "60px",
                 height: "100%",
               }}
-            /> */}
+            />
           </div>
         </div>
       </div>
