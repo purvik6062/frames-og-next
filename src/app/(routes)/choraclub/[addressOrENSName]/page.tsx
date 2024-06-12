@@ -16,7 +16,7 @@ export async function generateMetadata({
 }: {
   params: { addressOrENSName: string };
 }): Promise<Metadata> {
-  const name = "DEMO TITLE";
+  const name = "Chora Club";
 
   const address = params.addressOrENSName;
   const ensOrTruncatedAddress = await processAddressOrEnsName(
@@ -37,7 +37,8 @@ export async function generateMetadata({
       `votes=${encodeURIComponent(`${votingPower} ${tokenSymbol}`)}`,
     avatar && `avatar=${encodeURIComponent(avatar)}`,
     dao_name && `dao_name=${encodeURIComponent(dao_name)}`,
-  ].filter(Boolean);
+  ]
+  // .filter(Boolean);
 
   const preview = `${NEXT_PUBLIC_URL}/api/images/og/ccTest?${imgParams.join(
     "&"
