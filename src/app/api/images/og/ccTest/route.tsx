@@ -25,11 +25,11 @@ export async function GET(req: NextRequest) {
   //   ).then((res) => res.arrayBuffer());
 
   const bg = await fetch(
-    new URL("../assets/main-bg.png", import.meta.url)
+    new URL("../assets/main-bg.jpg", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const profile = await fetch(
-    new URL("../assets/profile-img.jpg", import.meta.url)
+    new URL("../assets/profile-img.png", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const texture = await fetch(
