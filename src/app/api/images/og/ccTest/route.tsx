@@ -32,9 +32,9 @@ export async function GET(req: NextRequest) {
     new URL("../assets/profile-img.png", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
-  const texture = await fetch(
-    new URL("../assets/meta2.png", import.meta.url)
-  ).then((res) => res.arrayBuffer());
+  //   const texture = await fetch(
+  //     new URL("../assets/meta2.png", import.meta.url)
+  //   ).then((res) => res.arrayBuffer());
 
   console.log(
     "URL.createObjectURL(new Blob([profile]))::",
@@ -145,15 +145,15 @@ export async function GET(req: NextRequest) {
             </div>
           </div>
           <div style={{ display: "flex" }}>
-            <img
-              /*@ts-ignore*/
+            {/*@ts-ignore*/}
+            {/* <img
               src={texture}
               alt="Chora Club"
               style={{
                 borderRadius: "60px",
                 height: "100%",
               }}
-            />
+            /> */}
           </div>
         </div>
       </div>
