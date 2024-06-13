@@ -6,6 +6,7 @@ import {
 } from "@coinbase/onchainkit/frame";
 import token_abi from "@/GovernanceToken.json";
 import { ethers } from "ethers";
+import type { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
 
 export async function POST(req: NextRequest, res: NextResponse) {
   console.log("Request received:", req.method);

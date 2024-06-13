@@ -37,7 +37,7 @@ export async function generateMetadata({
       `votes=${encodeURIComponent(`${votingPower} ${tokenSymbol}`)}`,
     avatar && `avatar=${encodeURIComponent(avatar)}`,
     dao_name && `dao_name=${encodeURIComponent(dao_name)}`,
-  ]
+  ];
   // .filter(Boolean);
 
   const preview = `${NEXT_PUBLIC_URL}/api/images/og/ccTest?${imgParams.join(
@@ -48,9 +48,14 @@ export async function generateMetadata({
   const frameMetadata = getFrameMetadata({
     buttons: [
       {
+        label: "Go to app",
+        action: "link",
+        target: `https://app.chora.club/`,
+      },
+      {
         label: "Delegate",
         action: "tx",
-        target: `${NEXT_PUBLIC_URL}/api/transaction`,
+        target: `https://farcaster-frames-ivory.vercel.app/api/transaction`,
       },
     ],
     image: preview,
